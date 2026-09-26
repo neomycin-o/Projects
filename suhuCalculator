@@ -1,0 +1,68 @@
+import java.util.*;
+import java.lang.*;
+
+public class konversi_suhu_loop{
+    static void main(){
+        Scanner input= new Scanner(System.in);
+        System.out.println("\n"+"\n--Choose a scale to measure temperature--" +
+                "\n1.Celcius\n2.Farenheit\n3.Reamur\n4.Kelvin\n5.Exit" +
+                "\nInput the number beside the scale to proceed. (ex. 1 for Celcius)");
+        int menu = 0;
+        while (menu!=5){
+            menu=input.nextInt();
+            if (menu ==1){
+                System.out.print("Insert the temparature in Celcius : ");
+                double celcius = input.nextFloat();
+                double farenheit=(celcius * 9 /5)+32;
+                double reamur= celcius * 4/5;
+                double kelvin= celcius +273;
+                System.out.println("--Hasil Konversi Suhu--");
+                System.out.printf("Celcius   : %.1f",celcius);
+                System.out.printf("\nFarenheit   : %.1f",farenheit);
+                System.out.printf("\nReanur   : %.1f",reamur);
+                System.out.printf("\nKelvin   : %.1f",kelvin);
+            }
+
+            else if (menu ==2){
+                System.out.print("Insert the temparature in Farenheit : ");
+                double farenheit = input.nextFloat();
+                double celcius=(farenheit - 32)*5/9;
+                double reamur= (farenheit-32)*4/9;
+                double kelvin= (farenheit-32/1.799)+273.15;
+                System.out.println("--Hasil Konversi Suhu--");
+                System.out.printf("Celcius   : %.1f",celcius);
+                System.out.printf("\nFarenheit   : %.1f",farenheit);
+                System.out.printf("\nReanur   : %.1f",reamur);
+                System.out.printf("\nKelvin   : %.1f",kelvin);
+            }
+
+            else if (menu ==3){
+                System.out.print("Insert the temparature in Reanur : ");
+                double reamur = input.nextFloat();
+                double farenheit=(reamur * 9 /4)+32;
+                double celcius= reamur * 5/4;
+                double kelvin= (reamur*5/4) +273;
+                System.out.println("--Hasil Konversi Suhu--");
+                System.out.printf("Celcius   : %.1f",celcius);
+                System.out.printf("\nFarenheit   : %.1f",farenheit);
+                System.out.printf("\nReanur   : %.1f",reamur);
+                System.out.printf("\nKelvin   : %.1f",kelvin);
+            }
+
+            else if (menu ==4){
+                System.out.print("Insert the temparature in Kelvin : ");
+                double kelvin = input.nextFloat();
+                double farenheit=1.8*(kelvin-273.15)+32;
+                double celcius= kelvin-273;
+                double reamur= (kelvin-273)*4/5;
+                System.out.println("--Hasil Konversi Suhu--");
+                System.out.printf("Celcius   : %.1f",celcius);
+                System.out.printf("\nFarenheit   : %.1f",farenheit);
+                System.out.printf("\nReanur   : %.1f",reamur);
+                System.out.printf("\nKelvin   : %.1f",kelvin);
+            }
+        }
+
+
+    }
+}
