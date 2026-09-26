@@ -1,0 +1,91 @@
+import java.util.*;
+import java.lang.*;
+
+public class persegi_multiarray{
+
+    static void inputmatriks(int[][] matriks,int n) {
+        Scanner input= new Scanner(System.in);
+        for(int baris = 0; baris <n; baris++){
+            for(int kolom=0;kolom<n;kolom++){
+                System.out.print("baris "+(baris+1)+" kolom "+(kolom+1)+": ");
+                matriks[baris][kolom]=input.nextInt();
+            }
+        }
+    }
+
+    static void matriks(int[][] matriks,int n) {
+        for(int baris = 0; baris <n; baris++){
+            System.out.print("|  ");
+            for(int kolom=0;kolom<n;kolom++){
+                System.out.printf("%3d ",matriks[baris][kolom]);
+
+            }
+            System.out.print("  |");
+            System.out.println();
+        }
+    }
+
+    static void plus(int[][] matriks, int[][] matriks2, int n){
+        for(int baris = 0; baris <n; baris++){
+            System.out.print("|  ");
+            for(int kolom=0;kolom<n;kolom++){
+                System.out.printf("%3d ",(matriks[baris][kolom]+matriks2[baris][kolom]));
+            }
+            System.out.print("  |");
+            System.out.println();
+        }
+    }
+
+    static void times(int[][] matriks, int[][] matriks2, int n){
+
+
+        for(int baris=0; baris<n;baris++){
+            System.out.print("|  ");
+            int temp;
+
+
+            for (int kolom = 0; kolom < n; kolom++) {
+//                temp = ((matriks[baris][zero+kolom] * matriks2[zero+kolom][kolom]) + (matriks[baris][zero+1] * matriks2[zero+1][kolom]));
+                temp = ((matriks[baris][0] * matriks2[0][kolom]));
+                for (int p=1;p<n;p++){
+                    temp = ((matriks[baris][p] * matriks2[p][kolom]) + temp);
+                }
+                System.out.printf("%5d",temp);
+
+            }
+
+
+            System.out.print("  |");
+            System.out.println();
+        }
+
+    }
+
+
+
+    static void main(){
+        Scanner input= new Scanner(System.in);
+        System.out.println("===program operasi matriks===");
+        int n=input.nextInt();
+        int[][] matriksA=new int[n][n];
+        int[][] matriksB=new int[n][n];
+
+        System.out.println("=== Input Matriks A ===");
+        inputmatriks(matriksA,n);
+        System.out.println("=== Input Matriks B ===");
+        inputmatriks(matriksB,n);
+
+        System.out.println("\n=== Matriks A ===");
+        matriks(matriksA, n);
+        System.out.println("=== Matriks B ===");
+        matriks(matriksB, n);
+
+        System.out.println("\n=== Operasi Penjumlahan (A+B) ===");
+        plus(matriksA,matriksB,n);
+
+        System.out.println("=== Operasi Perkallian (AxB) ===");
+
+        times(matriksA,matriksB,n);
+
+        }
+    }
