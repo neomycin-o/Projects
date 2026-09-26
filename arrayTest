@@ -1,0 +1,91 @@
+import java.util.Scanner;
+
+public class array {
+    static void main(){
+        Scanner input=new Scanner(System.in);
+        int n=5;
+        int[] data =new int[n];
+        int menu=0;
+        int maksimum=0;
+        int mini=0;
+        int total=0;
+        int range=0;
+
+
+        while(menu!=6){
+            System.out.println("\nMenu");
+            System.out.println("1.Initial Value\n2.Edit Data\n3.Show Data\n4.Delete All\n5.Analisis\n6.Exit");
+            System.out.print("Pilihan anda: ");
+            menu =input.nextInt();
+
+            if(menu ==1){
+                for(int i = 1; i <=n; i++){
+                    System.out.print("Masukan data ke-"+ i+" : ");
+                    data[i-1]=input.nextInt();
+                }
+            }
+
+            if(menu ==2){
+                System.out.print("Range Data: ");
+                int edit =input.nextInt();
+                while(edit>n||edit<=0){
+                    if(edit>n){
+                        System.out.print("Range terlalu tinggi: ");
+                    }
+                    if(edit<n){
+                        System.out.print("Range terlalu rendah: ");
+                    }
+                    edit =input.nextInt();
+                }
+                System.out.print("Masukkan data: ");
+                data[edit-1]=input.nextInt();
+            }
+
+            if(menu ==3){
+                System.out.println();
+                for(int i=1;i<=n;i++){
+                    System.out.println("Data ke-"+i+" : "+data[i-1]);
+                }
+            }
+
+            if(menu==4){
+                System.out.println("Anda yakin? Semua data akan dihapus secara permanen (Y/N)");
+                String delete=input.next();
+                if(delete.equals("y")||delete.equals("Y")){
+                    for(int i = 1; i <=n; i++){
+                        data[i-1]=0;
+                    }
+                    System.out.println("Semua data telah terhapus");
+                }
+                if(delete.equals("n")||delete.equals("N")){
+                }
+                else{
+                    System.out.println("ERROR input, silahkan input ulang Y untuk yes atau N untuk no");
+                }
+            }
+
+            if(menu==5){//analisis=mean,median,mode
+                for(int i = 1; i <=n; i++){
+                    if (i==1){
+                        maksimum = data[i-1];
+                        mini =data[i-1];
+                    }
+                    else if (data[i-1]> maksimum){
+                        maksimum =data[i-1];
+                    }
+
+                    else if (data[i-1]< mini){
+                        mini =data[i-1];
+                    }
+
+                    total=total+data[i-1];
+                }
+                range=maksimum-mini;
+                total=total/n;
+                System.out.println("Data maximum: " + maksimum +" || Data minimum: " +mini+ " || Data rata-rata: " +total+ " || Data range: " +range);
+
+            }
+
+        }
+    }
+}
